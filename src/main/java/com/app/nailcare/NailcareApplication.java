@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NailcareApplication {
+public class NailCareApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NailcareApplication.class, args);
+		SpringApplication.run(NailCareApplication.class, args);
 	}
 
 }
