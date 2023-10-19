@@ -3,8 +3,8 @@ package com.app.nailcare;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class NailcareApplicationTests {
+
+class NailCareApplicationTests {
 
 	@Test
 	void contextLoads() {
