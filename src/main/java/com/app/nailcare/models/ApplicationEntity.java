@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class ApplicationEntity {
+public abstract class ApplicationEntity<T> {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     protected UUID id;
