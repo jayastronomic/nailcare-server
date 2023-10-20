@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,5 +38,6 @@ public class Coverage extends ApplicationEntity<Coverage> {
     private Double monthlyFee;
 
     @OneToMany(mappedBy = "coverage")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Subscription> subscriptions;
 }
