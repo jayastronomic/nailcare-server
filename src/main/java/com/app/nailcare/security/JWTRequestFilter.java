@@ -1,5 +1,6 @@
 package com.app.nailcare.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -13,6 +14,16 @@ import java.util.logging.Logger;
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
     Logger logger = Logger.getLogger(JWTRequestFilter.class.getName());
+
+    private AuthUserDetailsService authUserDetailsService;
+
+    private JWTUtils jwtUtils;
+
+
+    @Autowired
+    public void setAuthUserDetailsService(AuthUserDetailsService authUserDetailsService) {
+        this.authUserDetailsService = authUserDetailsService;
+    }
 
 
     @Override
