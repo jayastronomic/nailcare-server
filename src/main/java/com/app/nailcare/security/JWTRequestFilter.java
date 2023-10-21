@@ -25,6 +25,11 @@ public class JWTRequestFilter extends OncePerRequestFilter {
         this.authUserDetailsService = authUserDetailsService;
     }
 
+    @Autowired
+    public void setJwtUtils(JWTUtils jwtUtils) {
+        this.jwtUtils = jwtUtils;
+    }
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
