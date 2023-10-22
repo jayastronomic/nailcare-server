@@ -1,12 +1,13 @@
 package com.app.nailcare.models;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -24,4 +25,14 @@ public class User extends ApplicationEntity<User> {
     @NotBlank(message = "Password can not be blank")
     @Column(nullable = false)
     private String password;
+
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Claim> claims;
+
+    @OneToOne(mappedBy = "user")
+    private Subscription subscription;
 }

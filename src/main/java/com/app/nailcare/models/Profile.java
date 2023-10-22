@@ -1,6 +1,7 @@
 package com.app.nailcare.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -40,6 +41,7 @@ public class Profile extends ApplicationEntity<Profile> {
     @NotNull(message = "Birth date can not be blank")
     private LocalDate birthdate;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

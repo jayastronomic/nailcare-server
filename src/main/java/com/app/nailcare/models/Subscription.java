@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.UUID;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -24,5 +24,5 @@ public class Subscription extends ApplicationEntity<Subscription> {
 
     @OneToOne
     @JoinColumn(name = "coverage_id", nullable = false)
-    private Coverage coverageId;
+    private Coverage coverage;
 }

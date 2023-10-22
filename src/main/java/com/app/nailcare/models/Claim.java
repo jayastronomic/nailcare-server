@@ -1,5 +1,6 @@
 package com.app.nailcare.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -43,10 +44,12 @@ public class Claim extends ApplicationEntity<Claim>{
     @Column(updatable = false)
     private LocalDate reviewDate;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "subscription_id", nullable = false)
     private Subscription subscription;

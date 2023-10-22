@@ -13,7 +13,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class ApplicationEntity<T> {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected UUID id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
