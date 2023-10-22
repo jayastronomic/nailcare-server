@@ -30,4 +30,10 @@ public class AuthController {
                 .created(URI.create("/api/v1/auth/signup"))
                 .body(new APIResponse<>(authService.create(payload), "success"));
     }
+
+    @PostMapping("/signup")
+    public ResponseEntity<APIResponse<User>> login(@RequestBody User payload){
+        return ResponseEntity
+                .ok(new APIResponse<>(authService.login(payload), "success"));
+    }
 }
