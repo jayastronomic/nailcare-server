@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -29,11 +30,11 @@ public class Coverage extends ApplicationEntity<Coverage> {
     @Column(nullable = false)
     private String planDescription;
 
-    @NotBlank(message = "Coverage limit can not be blank")
+    @NotNull(message = "Coverage limit can not be blank")
     @Column(nullable = false)
     private Integer coverageLimit;
 
-    @NotBlank(message = "Monthly fee can not be blank")
+    @NotNull(message = "Monthly fee can not be blank")
     @Column(nullable = false)
     private Double monthlyFee;
 
