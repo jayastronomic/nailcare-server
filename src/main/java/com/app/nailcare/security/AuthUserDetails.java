@@ -1,14 +1,12 @@
 package com.app.nailcare.security;
 
 import com.app.nailcare.models.User;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
 
-@Getter
 public record AuthUserDetails(User user) implements UserDetails {
 
     @Override

@@ -49,7 +49,7 @@ public class AuthService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             AuthUserDetails authUserDetails = (AuthUserDetails) authentication.getPrincipal();
             String jwt = jwtUtils.generateJwtToken(authUserDetails);
-            return authUserDetails.getUser();
+            return authUserDetails.user();
         } catch (Exception e) {
             throw new RuntimeException("Invalid email/password");
         }

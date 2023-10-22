@@ -31,7 +31,7 @@ public class AuthController {
                 .body(new APIResponse<>(authService.create(payload), "success"));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/login")
     public ResponseEntity<APIResponse<User>> login(@RequestBody User payload){
         return ResponseEntity
                 .ok(new APIResponse<>(authService.login(payload), "success"));

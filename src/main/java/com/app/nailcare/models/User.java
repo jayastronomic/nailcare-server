@@ -26,13 +26,13 @@ public class User extends ApplicationEntity<User> {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Claim> claims;
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Subscription subscription;
 }

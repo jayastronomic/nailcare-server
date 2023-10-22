@@ -21,7 +21,6 @@ public class JWTRequestFilter extends OncePerRequestFilter {
     Logger logger = Logger.getLogger(JWTRequestFilter.class.getName());
 
     private AuthUserDetailsService authUserDetailsService;
-
     private JWTUtils jwtUtils;
 
 
@@ -35,6 +34,15 @@ public class JWTRequestFilter extends OncePerRequestFilter {
         this.jwtUtils = jwtUtils;
     }
 
+    public String parseJWT(HttpServletRequest request){
+        String authHeader = request.getHeader("Authorization");
+
+        if(StringUtils.hasLength(authHeader) && authHeader.startsWith("Bearer")){
+            return authHeader.substring(7);
+        }
+        logger.info("No header");
+        return null;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -52,15 +60,5 @@ public class JWTRequestFilter extends OncePerRequestFilter {
             logger.info("Cannot set user authentication token");
         }
         filterChain.doFilter(request, response);
-    }
-
-    public String parseJWT(HttpServletRequest request){
-        String authHeader = request.getHeader("Authorization");
-
-        if(StringUtils.hasLength(authHeader) && authHeader.startsWith("Bearer")){
-            return authHeader.substring(7);
-        }
-        logger.info("No header");
-        return null;
     }
 }

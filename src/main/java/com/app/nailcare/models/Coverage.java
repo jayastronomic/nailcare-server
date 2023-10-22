@@ -37,7 +37,7 @@ public class Coverage extends ApplicationEntity<Coverage> {
     @Column(nullable = false)
     private Double monthlyFee;
 
-    @OneToMany(mappedBy = "coverage")
+    @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Subscription> subscriptions;
 }
