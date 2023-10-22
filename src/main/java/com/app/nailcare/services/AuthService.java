@@ -1,6 +1,9 @@
 package com.app.nailcare.services;
 
+import com.app.nailcare.exceptions.AlreadyExistException;
+import com.app.nailcare.models.User;
 import com.app.nailcare.repositories.UserRepository;
+import com.app.nailcare.security.AuthUserDetails;
 import com.app.nailcare.security.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -25,4 +28,14 @@ public class AuthService {
         this.jwtUtils = jwtUtils;
         this.authenticationManager = authenticationManager;
     }
+
+    public String create(User userObject) throws AlreadyExistException {
+        boolean exists = userRepository.existsByEmail(userObject.getEmail());
+        if (exists) throw new AlreadyExistException(User.class, "email", userObject.getEmail());
+        userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
+        String jwt = jwtUtils.generateJwtToken(new AuthUserDetails(userObject));
+        userRepository.save(userObject);
+        return jwt;
+    }
+
 }
