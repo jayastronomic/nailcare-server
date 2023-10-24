@@ -38,6 +38,13 @@ public class Profile extends ApplicationEntity<Profile> {
     private String streetAddress;
 
     @Column(nullable = false)
+    @NotBlank(message = "Zip code can not be blank")
+    private String zipCode;
+
+    @Column
+    private String unitNumber;
+
+    @Column(nullable = false)
     @NotNull(message = "Birth date can not be blank")
     private LocalDate birthdate;
 
