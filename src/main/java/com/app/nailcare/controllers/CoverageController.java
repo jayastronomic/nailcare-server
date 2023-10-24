@@ -5,6 +5,7 @@ import com.app.nailcare.responses.APIResponse;
 import com.app.nailcare.services.CoverageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,7 @@ public class CoverageController {
         this.coverageService = coverageService;
     }
 
+    @GetMapping
     public ResponseEntity<APIResponse<List<Coverage>>> index(){
         return ResponseEntity.ok(new APIResponse<>(coverageService.index(), "success"));
     }

@@ -14,6 +14,7 @@ import java.util.UUID;
 public abstract class ApplicationEntity<T> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     protected UUID id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
