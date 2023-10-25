@@ -1,4 +1,5 @@
 package com.app.nailcare.responses;
 
-public class AuthUser {
-}
+import com.app.nailcare.models.User;
+
+public record AuthUser(User user, String token) { }
