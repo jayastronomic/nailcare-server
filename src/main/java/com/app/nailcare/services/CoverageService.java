@@ -26,5 +26,5 @@ public class CoverageService extends ApplicationService {
         return this.coverageRepository.findById(id).orElseThrow();
     }
 
-    public Coverage getUserCoverage(){ return  currentUser().getSubscription().getCoverage() }
+    public Coverage getUserCoverage(){ return currentUser().getSubscription().getCoverage() ;}
 }
