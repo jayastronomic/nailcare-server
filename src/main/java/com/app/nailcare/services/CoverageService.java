@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class CoverageService {
+public class CoverageService extends ApplicationService {
     private final CoverageRepository coverageRepository;
 
     @Autowired
@@ -25,4 +25,6 @@ public class CoverageService {
     public Coverage show(UUID id){
         return this.coverageRepository.findById(id).orElseThrow();
     }
+
+    public Coverage getUserCoverage(){ return  currentUser().getSubscription().getCoverage() }
 }

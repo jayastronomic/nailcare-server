@@ -38,8 +38,6 @@ public class AuthController {
 
     @GetMapping("/loggedIn")
     public ResponseEntity<APIResponse<User>> isLoggedIn(){
-        return ResponseEntity.ok(new APIResponse<>(authService.isLoggedIn(), "success");
+        return ResponseEntity.ok(new APIResponse<>(authService.isLoggedIn(), "success"));
     }
-
-
 }
