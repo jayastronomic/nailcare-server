@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.logging.Logger;
 
 @Service
-public class AuthService {
+public class AuthService extends ApplicationService {
     private final Logger logger = Logger.getLogger(AuthService.class.getName());
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -39,6 +39,11 @@ public class AuthService {
         String jwt = jwtUtils.generateJwtToken(new AuthUserDetails(userObject));
         userRepository.save(userObject);
         return jwt;
+    }
+
+    public User isLoggedIn() throws UserNotLoggedInException {
+        if(currentUser() == null) throw new UserNotLoggedInException();
+        return currentUser();
     }
 
 
