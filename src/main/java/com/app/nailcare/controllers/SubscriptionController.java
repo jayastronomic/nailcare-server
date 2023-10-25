@@ -23,7 +23,7 @@ public class SubscriptionController {
         this.subscriptionService = subscriptionService;
     }
 
-    public ResponseEntity<APIResponse<Subscription> create(@RequestBody SubscriptionRequest payload){
+    public ResponseEntity<APIResponse<Subscription>> create(@RequestBody SubscriptionRequest payload){
         return  ResponseEntity
                 .created(URI.create("/api/v1/subscriptions"))
                 .body(new APIResponse<>(subscriptionService.create(payload.getCoverageId()), "success"));
