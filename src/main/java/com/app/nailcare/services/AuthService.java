@@ -1,6 +1,7 @@
 package com.app.nailcare.services;
 
 import com.app.nailcare.exceptions.AlreadyExistException;
+import com.app.nailcare.exceptions.UserNotLoggedInException;
 import com.app.nailcare.models.User;
 import com.app.nailcare.repositories.UserRepository;
 import com.app.nailcare.security.AuthUserDetails;
@@ -42,7 +43,7 @@ public class AuthService extends ApplicationService {
     }
 
     public User isLoggedIn() throws UserNotLoggedInException {
-        if(currentUser() == null) throw new UserNotLoggedInException();
+        if(currentUser() == null) throw new UserNotLoggedInException("User is not logged in. Please log in!");
         return currentUser();
     }
 
