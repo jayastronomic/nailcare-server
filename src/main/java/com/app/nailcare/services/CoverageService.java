@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CoverageService {
@@ -19,5 +20,9 @@ public class CoverageService {
 
     public List<Coverage> index(){
         return this.coverageRepository.findAll();
+    }
+
+    public Coverage show(UUID id){
+        return this.coverageRepository.findById(id).orElseThrow();
     }
 }
