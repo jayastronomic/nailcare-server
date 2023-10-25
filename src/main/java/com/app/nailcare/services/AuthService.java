@@ -41,6 +41,7 @@ public class AuthService {
         return jwt;
     }
 
+
     public User login(User payload)  {
         UsernamePasswordAuthenticationToken authenticationToken = new
                 UsernamePasswordAuthenticationToken(payload.getEmail(), payload.getPassword());

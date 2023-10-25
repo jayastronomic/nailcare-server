@@ -7,6 +7,7 @@ import com.app.nailcare.responses.APIResponse;
 import com.app.nailcare.services.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ public class SubscriptionController {
         this.subscriptionService = subscriptionService;
     }
 
+    @PostMapping
     public ResponseEntity<APIResponse<Subscription>> create(@RequestBody SubscriptionRequest payload){
         return  ResponseEntity
                 .created(URI.create("/api/v1/subscriptions"))
