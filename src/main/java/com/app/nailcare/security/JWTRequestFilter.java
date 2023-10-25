@@ -57,6 +57,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         } catch (Exception e) {
+            System.out.println(e);
             logger.info("Cannot set user authentication token");
         }
         filterChain.doFilter(request, response);
