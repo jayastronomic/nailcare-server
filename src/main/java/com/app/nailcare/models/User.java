@@ -38,4 +38,9 @@ public class User extends ApplicationEntity<User> {
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Subscription subscription;
+
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
 }

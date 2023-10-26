@@ -1,6 +1,7 @@
 package com.app.nailcare.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@Data
 public abstract class ApplicationEntity<T> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
