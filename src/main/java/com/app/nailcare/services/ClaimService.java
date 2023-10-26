@@ -17,6 +17,7 @@ public class ClaimService extends  ApplicationService{
     }
 
     public Claim create(Claim payload){
+        payload.setClaimStatus("Review");
         payload.setUser(currentUser());
         payload.setSubscription(currentUser().getSubscription());
         return claimRepository.save(payload);

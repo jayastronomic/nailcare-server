@@ -30,7 +30,7 @@ public class User extends ApplicationEntity<User> {
     @OneToOne(mappedBy = "user")
     private Profile profile;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Claim> claims;
