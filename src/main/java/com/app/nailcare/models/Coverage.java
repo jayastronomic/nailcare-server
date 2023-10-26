@@ -41,5 +41,6 @@ public class Coverage extends ApplicationEntity<Coverage> {
 
     @OneToMany
     @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Subscription> subscriptions;
 }
