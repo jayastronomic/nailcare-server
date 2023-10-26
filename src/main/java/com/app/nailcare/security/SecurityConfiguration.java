@@ -25,12 +25,12 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/api/v1/auth/signup", "/api/v1/auth/login", "/api/v1/auth/logged_in").permitAll()
+        http.authorizeRequests().antMatchers("/api/v1/auth/signup", "/api/v1/auth/login", "/api/v1/auth/logged_in", "/api/v1/coverages", "/api/v1/coverages/{id}" ).permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().csrf().disable()
                 .headers().frameOptions().disable();
-
+        http.cors();
         http.addFilterBefore(authJwtRequestFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

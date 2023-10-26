@@ -1,5 +1,6 @@
 package com.app.nailcare.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,6 +40,6 @@ public class Coverage extends ApplicationEntity<Coverage> {
     private Double monthlyFee;
 
     @OneToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     private List<Subscription> subscriptions;
 }

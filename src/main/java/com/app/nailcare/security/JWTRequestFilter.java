@@ -48,7 +48,6 @@ public class JWTRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try{
             String jwt = parseJWT(request);
-
             if (jwt != null && jwtUtils.validateJwt(jwt)){
                 String username = jwtUtils.getUsernameFromJwt(jwt);
                 UserDetails userDetails = this.authUserDetailsService.loadUserByUsername(username);

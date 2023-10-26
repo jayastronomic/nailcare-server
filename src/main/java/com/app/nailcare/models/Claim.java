@@ -30,7 +30,6 @@ public class Claim extends ApplicationEntity<Claim>{
     @Column(nullable = false, updatable = false)
     private String affectedNails;
 
-    @NotBlank(message = "Claim Status can not be blank")
     @Column(nullable = false)
     private String claimStatus;
 

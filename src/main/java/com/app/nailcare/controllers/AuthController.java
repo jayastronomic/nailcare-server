@@ -2,13 +2,11 @@ package com.app.nailcare.controllers;
 
 import com.app.nailcare.models.User;
 import com.app.nailcare.responses.APIResponse;
+import com.app.nailcare.responses.AuthUser;
 import com.app.nailcare.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -35,5 +33,11 @@ public class AuthController {
     public ResponseEntity<APIResponse<User>> login(@RequestBody User payload){
         return ResponseEntity
                 .ok(new APIResponse<>(authService.login(payload), "success"));
+    }
+
+
+    @GetMapping("/loggedIn")
+    public ResponseEntity<APIResponse<User>> isLoggedIn(){
+        return ResponseEntity.ok(new APIResponse<>(authService.isLoggedIn(), "success"));
     }
 }

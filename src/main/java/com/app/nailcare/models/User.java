@@ -1,5 +1,6 @@
 package com.app.nailcare.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -29,10 +30,12 @@ public class User extends ApplicationEntity<User> {
     @OneToOne(mappedBy = "user")
     private Profile profile;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Claim> claims;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Subscription subscription;
 }
