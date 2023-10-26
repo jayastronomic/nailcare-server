@@ -13,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -46,14 +48,30 @@ class ClaimServiceTest {
 
     @Test
     void testCreateClaim() {
+        // Create a mock Claim with the required attributes
         Claim mockClaim = new Claim();
+        mockClaim.setClaimDate(LocalDate.now());
+        mockClaim.setDescription("Test Description");
+        mockClaim.setAffectedNails("Test Nails");
+        mockClaim.setClaimAmount(100.0);
         mockClaim.setClaimStatus("Review");
 
+        // Mock the behavior of claimRepository to return the mockClaim when saving
         when(claimRepository.save(any(Claim.class))).thenReturn(mockClaim);
 
+        // Call the method to create a Claim
         Claim newClaim = claimService.create(mockClaim);
 
-        assertEquals("Review", newClaim.getClaimStatus());
+        // Verify that the returned Claim matches the expected values
+        assertEquals(mockClaim.getClaimDate(), newClaim.getClaimDate());
+        assertEquals(mockClaim.getDescription(), newClaim.getDescription());
+        assertEquals(mockClaim.getAffectedNails(), newClaim.getAffectedNails());
+        assertEquals(mockClaim.getClaimAmount(), newClaim.getClaimAmount());
+        assertEquals(mockClaim.getClaimStatus(), newClaim.getClaimStatus());
+
+        // Verify that the save method of claimRepository was called with the correct Claim
+        verify(claimRepository).save(any(Claim.class));
+
     }
 
 
