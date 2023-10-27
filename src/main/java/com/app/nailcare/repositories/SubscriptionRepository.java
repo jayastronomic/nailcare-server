@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * The SubscriptionRepository interface defines data access operations for managing user subscriptions in the NailCare application.
+ */
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, UUID> {
 }
