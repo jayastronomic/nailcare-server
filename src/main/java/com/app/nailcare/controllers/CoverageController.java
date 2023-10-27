@@ -18,6 +18,11 @@ import java.util.UUID;
 public class CoverageController {
     private final CoverageService coverageService;
 
+    /**
+     * Constructs a CoverageController with the provided CoverageService.
+     *
+     * @param coverageService The CoverageService responsible for managing insurance coverage.
+     */
     @Autowired
     public CoverageController(CoverageService coverageService){
         this.coverageService = coverageService;
