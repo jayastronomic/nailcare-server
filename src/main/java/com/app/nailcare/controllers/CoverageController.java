@@ -38,6 +38,12 @@ public class CoverageController {
         return ResponseEntity.ok(new APIResponse<>(coverageService.index(), "success"));
     }
 
+    /**
+     * Endpoint for retrieving information about a specific insurance coverage by its unique identifier.
+     *
+     * @param id The unique identifier of the coverage to retrieve.
+     * @return A ResponseEntity containing an APIResponse with a success message and information about the requested insurance coverage.
+     */
     @GetMapping("/coverages/{id}")
     public ResponseEntity<APIResponse<Coverage>> show(@PathVariable(value = "id") UUID id){
         return  ResponseEntity.ok(new APIResponse<>(coverageService.show(id), "success"));
