@@ -90,6 +90,11 @@ Refer to the API documentation to understand available endpoints and how to use 
 
 [Link to API Endpoints Documentation](endpoints.png)
 
+## NailSurent Client - Angular App
+
+The link to the client side of the application built with Angular
+https://github.com/jayastronomic/nailcare-client
+
 ## Challenges Faced
 
 One of the key challenges faced during the development of NailSurent was implementing security features to ensure user data and transactions were protected. This involved setting up user authentication, authorization, and securing API endpoints.
