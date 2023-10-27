@@ -55,6 +55,11 @@ public class AuthController {
     }
 
 
+    /**
+     * Endpoint to check if a user is logged in and retrieve the user's information.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and the user's information if logged in.
+     */
     @GetMapping("/loggedIn")
     public ResponseEntity<APIResponse<User>> isLoggedIn(){
         return ResponseEntity.ok(new APIResponse<>(authService.isLoggedIn(), "success"));
