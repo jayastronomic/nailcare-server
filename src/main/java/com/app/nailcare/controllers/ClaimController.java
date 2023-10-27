@@ -42,6 +42,11 @@ public class ClaimController {
 
 
 
+    /**
+     * Endpoint for retrieving a list of insurance claims.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and a list of insurance claims.
+     */
     @GetMapping
     public ResponseEntity<APIResponse<List<Claim>>> index(){
         return  ResponseEntity.ok(new APIResponse<>(claimService.index(), "success"));
