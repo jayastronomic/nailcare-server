@@ -15,11 +15,22 @@ import java.util.List;
 @RequestMapping("/api/v1/claims")
 public class ClaimController {
     private final ClaimService claimService;
-
+    /**
+     * Constructs a ClaimController with the provided ClaimService.
+     *
+     * @param claimService The ClaimService responsible for managing insurance claims.
+     */
     @Autowired
     public ClaimController(ClaimService claimService){
         this.claimService = claimService;
     }
+
+    /**
+     * Endpoint for creating a new insurance claim.
+     *
+     * @param payload The Claim object containing details of the new claim.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the claim creation.
+     */
 
     @PostMapping
     public ResponseEntity<APIResponse<Claim>> create(@Valid @RequestBody Claim payload){
@@ -29,6 +40,13 @@ public class ClaimController {
 
     }
 
+
+
+    /**
+     * Endpoint for retrieving a list of insurance claims.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and a list of insurance claims.
+     */
     @GetMapping
     public ResponseEntity<APIResponse<List<Claim>>> index(){
         return  ResponseEntity.ok(new APIResponse<>(claimService.index(), "success"));

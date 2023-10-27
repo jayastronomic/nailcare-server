@@ -19,11 +19,11 @@ public class CoverageService extends ApplicationService {
 
 
     public List<Coverage> index(){
-        return this.coverageRepository.findAll();
+        return coverageRepository.findAll();
     }
 
     public Coverage show(UUID id){
-        return this.coverageRepository.findById(id).orElseThrow();
+        return coverageRepository.findById(id).orElseThrow();
     }
 
     public Coverage getUserCoverage(){ return currentUser().getSubscription().getCoverage() ;}

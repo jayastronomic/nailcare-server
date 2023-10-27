@@ -19,11 +19,24 @@ import java.net.URI;
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
+
+    /**
+     * Constructs a SubscriptionController with the provided SubscriptionService.
+     *
+     * @param subscriptionService The SubscriptionService responsible for managing user subscriptions.
+     */
     @Autowired
     public SubscriptionController(SubscriptionService subscriptionService){
         this.subscriptionService = subscriptionService;
     }
 
+
+    /**
+     * Endpoint for creating a new user subscription based on a given coverage.
+     *
+     * @param payload The SubscriptionRequest containing the ID of the selected coverage.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the subscription creation.
+     */
     @PostMapping
     public ResponseEntity<APIResponse<Subscription>> create(@RequestBody SubscriptionRequest payload){
         return  ResponseEntity

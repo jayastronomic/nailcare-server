@@ -16,12 +16,23 @@ import java.net.URI;
 public class AuthController {
     private final AuthService authService;
 
+    /**
+     * Constructs an AuthController with the provided AuthService.
+     *
+     * @param authService The AuthService responsible for handling authentication operations.
+     */
     @Autowired
     public AuthController(AuthService authService){
         this.authService = authService;
     }
 
 
+    /**
+     * Endpoint for user registration (signup).
+     *
+     * @param payload The User object containing user registration details.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the registration.
+     */
     @PostMapping("/signup")
     public ResponseEntity<APIResponse<String>> create(@Valid @RequestBody User payload){
         return ResponseEntity
@@ -29,6 +40,14 @@ public class AuthController {
                 .body(new APIResponse<>(authService.create(payload), "success"));
     }
 
+
+
+    /**
+     * Endpoint for user login.
+     *
+     * @param payload The User object containing user login credentials.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the login operation.
+     */
     @PostMapping("/login")
     public ResponseEntity<APIResponse<User>> login(@RequestBody User payload){
         return ResponseEntity
@@ -36,6 +55,11 @@ public class AuthController {
     }
 
 
+    /**
+     * Endpoint to check if a user is logged in and retrieve the user's information.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and the user's information if logged in.
+     */
     @GetMapping("/loggedIn")
     public ResponseEntity<APIResponse<User>> isLoggedIn(){
         return ResponseEntity.ok(new APIResponse<>(authService.isLoggedIn(), "success"));

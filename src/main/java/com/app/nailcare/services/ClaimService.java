@@ -24,6 +24,6 @@ public class ClaimService extends  ApplicationService{
     }
 
     public List<Claim> index(){
-        return currentUser().getClaims();
+        return claimRepository.findByUser_Id(currentUser().getId()).orElseThrow();
     }
 }

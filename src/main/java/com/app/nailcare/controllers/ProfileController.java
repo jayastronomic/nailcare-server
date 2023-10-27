@@ -18,11 +18,23 @@ import java.net.URI;
 public class ProfileController {
     private final ProfileService profileService;
 
+    /**
+     * Constructs a ProfileController with the provided ProfileService.
+     *
+     * @param profileService The ProfileService responsible for managing user profiles.
+     */
     @Autowired
     public ProfileController(ProfileService profileService){
         this.profileService = profileService;
     }
 
+
+    /**
+     * Endpoint for creating a new user profile.
+     *
+     * @param payload The Profile object containing details of the new user profile.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the profile creation.
+     */
     @PostMapping
     public ResponseEntity<APIResponse<Profile>> create(@Valid @RequestBody Profile payload){
         return ResponseEntity
