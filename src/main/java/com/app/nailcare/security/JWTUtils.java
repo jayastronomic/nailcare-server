@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The JWTUtils service class provides utility methods for handling JSON Web Tokens (JWT) in the NailCare application.
+ */
 @Service
 public class JWTUtils {
     Logger logger = Logger.getLogger(JWTUtils.class.getName());
@@ -18,6 +21,12 @@ public class JWTUtils {
     @Value("${jwt-expiration-ms}")
     private int jwtExpirationMs;
 
+    /**
+     * Generate a JWT token based on the provided AuthUserDetails.
+     *
+     * @param authUserDetails The user details used to create the JWT token.
+     * @return The generated JWT token as a string.
+     */
     public String generateJwtToken(AuthUserDetails authUserDetails) {
         return Jwts.builder()
                 .setSubject(authUserDetails.getUsername())
@@ -27,6 +36,12 @@ public class JWTUtils {
                 .compact();
     }
 
+    /**
+     * Extract the username from a JWT token.
+     *
+     * @param token The JWT token from which to extract the username.
+     * @return The username extracted from the token.
+     */
     public String getUsernameFromJwt(String token){
         return Jwts.parserBuilder()
                 .setSigningKey(jwtSecret)
@@ -35,6 +50,12 @@ public class JWTUtils {
                 .getBody().getSubject();
     }
 
+    /**
+     * Validate the integrity and expiration of a JWT token.
+     *
+     * @param token The JWT token to validate.
+     * @return true if the token is valid; false if it is invalid.
+     */
     public boolean validateJwt(String token){
         try{
             Jwts.parser().setSigningKey(jwtSecret)

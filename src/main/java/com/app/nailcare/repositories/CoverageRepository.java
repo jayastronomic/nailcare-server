@@ -6,5 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * The CoverageRepository interface defines data access operations for managing insurance coverages in the NailCare application.
+ */
 @Repository
 public interface CoverageRepository extends JpaRepository<Coverage, UUID> {}

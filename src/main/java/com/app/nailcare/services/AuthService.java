@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
+/**
+ * The AuthService class provides authentication and user-related services in the NailCare application.
+ */
 @Service
 public class AuthService extends ApplicationService {
     private final Logger logger = Logger.getLogger(AuthService.class.getName());
@@ -33,6 +36,13 @@ public class AuthService extends ApplicationService {
         this.authenticationManager = authenticationManager;
     }
 
+    /**
+     * Create a new user and return a JWT token upon successful registration.
+     *
+     * @param userObject The user object to be created and registered.
+     * @return The JWT token generated upon successful registration.
+     * @throws AlreadyExistException if a user with the same email already exists.
+     */
     public String create(User userObject) throws AlreadyExistException {
         boolean exists = userRepository.existsByEmail(userObject.getEmail());
         if (exists) throw new AlreadyExistException(User.class, "email", userObject.getEmail());
@@ -42,12 +52,24 @@ public class AuthService extends ApplicationService {
         return jwt;
     }
 
+    /**
+     * Check if a user is currently logged in and return their user details.
+     *
+     * @return The user details of the currently logged-in user.
+     * @throws UserNotLoggedInException if no user is currently logged in.
+     */
     public User isLoggedIn() throws UserNotLoggedInException {
         if(currentUser() == null) throw new UserNotLoggedInException("User is not logged in. Please log in!");
         return currentUser();
     }
 
-
+    /**
+     * Authenticate a user based on their login credentials and return their user details.
+     *
+     * @param payload The user login credentials (email and password).
+     * @return The user details of the authenticated user.
+     * @throws RuntimeException if the login credentials are invalid.
+     */
     public User login(User payload)  {
         UsernamePasswordAuthenticationToken authenticationToken = new
                 UsernamePasswordAuthenticationToken(payload.getEmail(), payload.getPassword());
