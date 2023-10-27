@@ -18,6 +18,11 @@ import java.net.URI;
 public class ProfileController {
     private final ProfileService profileService;
 
+    /**
+     * Constructs a ProfileController with the provided ProfileService.
+     *
+     * @param profileService The ProfileService responsible for managing user profiles.
+     */
     @Autowired
     public ProfileController(ProfileService profileService){
         this.profileService = profileService;
