@@ -27,6 +27,12 @@ public class AuthController {
     }
 
 
+    /**
+     * Endpoint for user registration (signup).
+     *
+     * @param payload The User object containing user registration details.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the registration.
+     */
     @PostMapping("/signup")
     public ResponseEntity<APIResponse<String>> create(@Valid @RequestBody User payload){
         return ResponseEntity
