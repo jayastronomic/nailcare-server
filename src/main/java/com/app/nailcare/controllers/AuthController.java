@@ -16,6 +16,11 @@ import java.net.URI;
 public class AuthController {
     private final AuthService authService;
 
+    /**
+     * Constructs an AuthController with the provided AuthService.
+     *
+     * @param authService The AuthService responsible for handling authentication operations.
+     */
     @Autowired
     public AuthController(AuthService authService){
         this.authService = authService;
