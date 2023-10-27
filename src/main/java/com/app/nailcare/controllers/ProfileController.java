@@ -28,6 +28,13 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
+
+    /**
+     * Endpoint for creating a new user profile.
+     *
+     * @param payload The Profile object containing details of the new user profile.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the profile creation.
+     */
     @PostMapping
     public ResponseEntity<APIResponse<Profile>> create(@Valid @RequestBody Profile payload){
         return ResponseEntity
