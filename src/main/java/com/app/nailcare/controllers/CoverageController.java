@@ -28,6 +28,11 @@ public class CoverageController {
         this.coverageService = coverageService;
     }
 
+    /**
+     * Endpoint for retrieving a list of available insurance coverages.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and a list of available insurance coverages.
+     */
     @GetMapping("/coverages")
     public ResponseEntity<APIResponse<List<Coverage>>> index(){
         return ResponseEntity.ok(new APIResponse<>(coverageService.index(), "success"));
