@@ -15,7 +15,11 @@ import java.util.List;
 @RequestMapping("/api/v1/claims")
 public class ClaimController {
     private final ClaimService claimService;
-
+    /**
+     * Constructs a ClaimController with the provided ClaimService.
+     *
+     * @param claimService The ClaimService responsible for managing insurance claims.
+     */
     @Autowired
     public ClaimController(ClaimService claimService){
         this.claimService = claimService;
