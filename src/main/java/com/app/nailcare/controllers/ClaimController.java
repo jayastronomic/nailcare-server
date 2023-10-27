@@ -25,6 +25,13 @@ public class ClaimController {
         this.claimService = claimService;
     }
 
+    /**
+     * Endpoint for creating a new insurance claim.
+     *
+     * @param payload The Claim object containing details of the new claim.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the claim creation.
+     */
+
     @PostMapping
     public ResponseEntity<APIResponse<Claim>> create(@Valid @RequestBody Claim payload){
         return  ResponseEntity
@@ -32,6 +39,8 @@ public class ClaimController {
                 .body(new APIResponse<>(claimService.create(payload), "success"));
 
     }
+
+
 
     @GetMapping
     public ResponseEntity<APIResponse<List<Claim>>> index(){
