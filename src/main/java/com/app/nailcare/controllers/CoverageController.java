@@ -49,6 +49,11 @@ public class CoverageController {
         return  ResponseEntity.ok(new APIResponse<>(coverageService.show(id), "success"));
     }
 
+    /**
+     * Endpoint for retrieving insurance coverage information for a user.
+     *
+     * @return A ResponseEntity containing an APIResponse with a success message and the insurance coverage information for the user.
+     */
     @GetMapping("/users/coverages")
     public ResponseEntity<APIResponse<Coverage>> getUserCoverage(){
         return  ResponseEntity.ok(new APIResponse<>(coverageService.getUserCoverage(), "success"));
