@@ -19,6 +19,12 @@ import java.net.URI;
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
+
+    /**
+     * Constructs a SubscriptionController with the provided SubscriptionService.
+     *
+     * @param subscriptionService The SubscriptionService responsible for managing user subscriptions.
+     */
     @Autowired
     public SubscriptionController(SubscriptionService subscriptionService){
         this.subscriptionService = subscriptionService;
