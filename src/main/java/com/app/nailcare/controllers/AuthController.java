@@ -40,6 +40,14 @@ public class AuthController {
                 .body(new APIResponse<>(authService.create(payload), "success"));
     }
 
+
+
+    /**
+     * Endpoint for user login.
+     *
+     * @param payload The User object containing user login credentials.
+     * @return A ResponseEntity containing an APIResponse with a success message and the result of the login operation.
+     */
     @PostMapping("/login")
     public ResponseEntity<APIResponse<User>> login(@RequestBody User payload){
         return ResponseEntity
